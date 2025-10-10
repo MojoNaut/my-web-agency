@@ -1,0 +1,125 @@
+
+* {
+    font-family: Helvetica, sans-serif;
+    margin: 0;
+   
+}
+
+section {
+    min-height: 100vh;
+    height:100%;
+    padding-left: calc(5vw + 10px);
+  padding-right: calc(5vw + 10px);
+  padding-top: calc(3vw + 10px);
+  padding-bottom: calc(3vw + 10px);
+}
+#dark .text{
+  color:#fff!important;
+}
+
+#light .textInfo{
+  color:#fff!important;
+  background-color:#000!important;
+}
+#dark .textInfo{
+  color:#000!important;
+  background-color:#fff!important;
+}
+#light .textInfo1{
+  color:#000!important;
+  background-color:#fff!important;
+}
+#dark .textInfo1{
+  color:#fff!important;
+  background-color:#000!important;
+}
+#light .text{
+  color:#000!important;
+}
+#dark .background-site{
+  background-color:#000!important;
+}
+#light .background-site{
+  background-color:#fff!important;
+}
+
+#dark .containerColor{
+  background: rgba(0, 0, 0, 0.5)!important;
+  backdrop-filter: blur(10px)!important;
+  -webkit-backdrop-filter: blur(10px)!important;
+  border: 1px solid rgba(0, 0, 0, 0.8)!important;
+  }
+
+#light .containerColor{
+  background: rgba(255, 255, 255, 0.5)!important;
+  backdrop-filter: blur(10px)!important;
+  -webkit-backdrop-filter: blur(10px)!important;
+  border: 1px solid rgba(255, 255, 255, 0.8)!important;
+  }
+
+#dark .ctaColor{
+  color:#000!important;
+}
+#dark .ctaColor:hover{
+  color:#000!important;
+}
+#light .ctaColor{
+  color:#fff!important;
+}
+#light .ctaColor:hover{
+  color:#fff!important;
+}
+
+#light .ctaBColor{
+  background: rgba(0, 0, 0, 1)!important;
+  backdrop-filter: blur(10px)!important;
+  -webkit-backdrop-filter: blur(10px)!important;
+  border: 1px solid rgba(0, 0, 0, 0.8)!important;
+}
+#light .ctaBColor:hover{
+  background: rgba(0, 0, 0, 0.8)!important;
+  backdrop-filter: blur(10px)!important;
+  -webkit-backdrop-filter: blur(10px)!important;
+  border: 1px solid rgba(0, 0, 0, 0.8)!important;
+}
+#dark .ctaBColor{
+  background: rgba(255, 255, 255, 1)!important;
+  backdrop-filter: blur(10px)!important;
+  -webkit-backdrop-filter: blur(10px)!important;
+  border: 1px solid rgba(255, 255, 255, 0.8)!important;
+}
+#dark .ctaBColor:hover{
+  background: rgba(255, 255, 255, 0.8)!important;
+  backdrop-filter: blur(10px)!important;
+  -webkit-backdrop-filter: blur(10px)!important;
+  border: 1px solid rgba(255, 255, 255, 0.8)!important;
+}
+
+#dark .card:hover .ctaBColor {
+  background: rgba(255, 255, 255, 0.8)!important;
+  backdrop-filter: blur(10px)!important;
+  -webkit-backdrop-filter: blur(10px)!important;
+  border: 1px solid rgba(255, 255, 255, 0.8)!important;
+}
+#light .card:hover .ctaBColor {
+  background: rgba(0, 0, 0, 1)!important;
+  backdrop-filter: blur(10px)!important;
+  -webkit-backdrop-filter: blur(10px)!important;
+  border: 1px solid rgba(0, 0, 0, 0.8)!important;
+}
+#dark .card:hover .ctaColor {
+color:#000;
+}
+#light .card:hover .ctaColor {
+  color:fff;
+}
+@media (max-width: 480px) {
+  section {
+    min-height: 100vh;
+    height: 100%;
+    padding-left: calc(2vw + 10px);
+    padding-right: calc(2vw + 10px);
+    padding-top: calc(2vw + 10px);
+    padding-bottom: calc(2vw + 10px);
+  }
+}

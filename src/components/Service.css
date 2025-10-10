@@ -1,0 +1,261 @@
+:root {
+  --card-height: 43vw;
+  --card-margin: 4vw;
+  --card-top-offset: 0em;
+  --numcards: 3;
+  --outline-width: 0px;
+}
+#cards ul {
+  padding:0;
+}
+
+/* Container for the button with text and arrow */
+.containerArrow1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #000;
+  position: absolute;
+  left: 0;
+  z-index: 2;
+  transition: width 0.4s ease-in-out; /* Add transition for width */
+}
+
+.containerArrow1 i {
+  padding: 20px;
+  display: block;
+  font-size: calc(10px + 1em);
+  transition: all 0.4s ease-in-out;
+  transform: rotateZ(135deg);
+  color: #fff;
+}
+
+.card-content:hover .containerArrow1 i,
+.TouchCard .containerArrow1 i {
+  transform: rotateZ(-45deg);
+  color: #fff;
+}
+
+.card-content:hover .containerArrow1 {
+  width: auto; /* Expand width on hover */
+}
+
+.card-content:hover .containerArrow1 .findMore {
+  display: inline; /* Show message on hover */
+}
+
+.findMore {
+  display: none; /* Initially hidden */
+  margin-left: 10px; /* Spacing between arrow and message */
+  color: red; /* Message color */
+  font-size: 1rem; /* Message font size */
+}
+
+
+.containetCards ul{
+  padding: 0;
+}
+
+.containerInfo {
+  font-size: 1rem;
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  border-radius: 2rem;
+  padding: 10px 20px;
+  text-decoration: none;
+  color: #000;
+  transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+}
+
+ figure {
+  grid-area: img;
+  overflow: hidden;
+}
+
+ figure > video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-top-right-radius: 12.0em;
+}
+
+.infoConteinerThing {
+  height: 80%;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  min-height: 360px;
+}
+
+.infoContainerWrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.625rem 0.4rem;
+  padding: 0px 0px 30px 0;
+}
+
+.card h2 {
+  font-size: calc(5vw + 0.5rem);
+  font-weight: 400;
+  color: #000;
+  padding: 0px 0px 40px 0px;
+}
+
+#cards {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(var(--numcards), var(--card-height));
+  gap: var(--card-margin);
+  padding-bottom: calc(var(--numcards) * var(--card-top-offset));
+  margin-bottom: var(--card-margin);
+}
+
+#card-1 {
+  --index: 1;
+}
+
+#card-2 {
+  --index: 2;
+}
+
+#card-3 {
+  --index: 3;
+}
+
+.card {
+  position: sticky;
+  top: 8%;
+  padding-top: calc(var(--index) * var(--card-top-offset));
+}
+
+.card-content {
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 85px;
+  overflow: hidden;
+  display: grid;
+  grid-template-areas: "text img";
+  grid-template-columns: 1fr calc(10em + 23vw);
+  grid-template-rows: auto;
+  align-items: flex-start;
+  height: auto;
+  padding: calc(11px + 2.5vw) calc(20px + 2vw);
+  gap: 10%;
+
+}
+
+
+
+.ConteinerThing {
+  /* Your styles here if any */
+}
+
+/* Animation */
+@supports (animation-timeline: works) {
+  @scroll-timeline cards-element-scrolls-in-body {
+    source: selector(body);
+    scroll-offsets:
+      selector(#cards) start 1,
+      selector(#cards) start 0;
+    start: selector(#cards) start 1;
+    end: selector(#cards) start 0;
+    time-range: 4s;
+  }
+
+  .card {
+    --index0: calc(var(--index) - 1);
+    --reverse-index: calc(var(--numcards) - var(--index0));
+    --reverse-index0: calc(var(--reverse-index) - 1);
+  }
+
+  .card__content {
+    transform-origin: 50% 0%;
+    will-change: transform;
+    --duration: calc(var(--reverse-index0) * 1s);
+    --delay: calc(var(--index0) * 1s);
+    animation: var(--duration) linear scale var(--delay) forwards;
+    animation-timeline: cards-element-scrolls-in-body;
+  }
+
+  @keyframes scale {
+    to {
+      transform: scale(calc(1.1 - calc(0.1 * var(--reverse-index))));
+    }
+  }
+}
+@media (max-width: 1024px) {
+  :root {
+    --card-height: 100%;
+    --card-margin: 4vw;
+    --card-top-offset: 0em;
+    --numcards: 3;
+    --outline-width: 0px;
+  }
+  .infoConteinerThing {
+    align-content: flex-start;
+   
+  }
+  .card h2 {
+    font-size: calc(6vw + 0.5rem);
+    font-weight: 400;
+    color: #000;
+    padding: 40px 0px 40px 0px;
+  }
+  figure > video {
+    
+    border-top-right-radius: 4.0em;
+    border-top-left-radius: 4.0em;
+  }
+  .containerInfo {
+    font-size: 0.9rem;
+    border-radius: 2rem;
+    padding: 8px 16px;
+    text-decoration: none;
+    color: #000;
+    transition: background-color 0.2s ease, color 0.2s ease, opacity 0.2s ease, border-color 0.2s ease;
+  }
+  .card-content {
+    grid-template-columns: 1fr; /* Una sola colonna per layout tablet */
+    grid-template-rows: auto auto; /* Due righe automatiche */
+    gap: 0;
+    align-items: center;
+    height: auto;
+    padding: calc(20px + 2vw) calc(20px + 2vw);
+  }
+
+  /* Inverti l'ordine degli elementi */
+  .card-content > .infoConteinerThing {
+    grid-row: 2; /* Sposta la sezione testo alla seconda riga */
+    max-width: 600px;
+  }
+
+  .card-content > .containerimg {
+    grid-row: 1; /* Sposta la sezione video alla prima riga */
+  }
+  .infoConteinerThing {
+    height: 100%;
+  }
+  figure > video {
+    max-height: 420px;
+    height:100%;
+  }
+  figure{
+   
+  }
+}
+@media (max-width: 768px) {
+  .card h2 {
+    font-size: calc(8vw + 0.5rem);
+    font-weight: 400;
+    color: #000;
+    padding: 10px 0px 20px 0px;
+  }
+}

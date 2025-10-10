@@ -1,0 +1,220 @@
+.portfolio {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 16px;
+}
+
+
+#dark .portfolio-item {
+  position: relative;
+  overflow: hidden;
+  height: 450px; /* Set max height */
+  border-radius: 16px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+#light .portfolio-item{
+  position: relative;
+  overflow: hidden;
+  height: 450px; /* Set max height */
+  border-radius: 16px;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.portfolio-img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  max-height: 450px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.portfolio-imghover {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  max-height: 145px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+
+.portfolio-imghover {
+  z-index: 3;
+  opacity: 0;
+}
+.portfolio-imghover svg{
+  background-color:#fff;
+}
+.portfolio-item:hover .portfolio-imghover,
+.TouchCard .portfolio-imghover {
+  opacity: 1;
+}
+
+.portfolio-item:hover,
+.portfolio-item:focus,
+.TouchCard {
+  transform: scale(1.0);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.overLay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* Example overlay background */
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.portfolio-item:hover .overLay,
+.TouchCard .overLay {
+  opacity: 1;
+}
+
+.portfolio-item-0 { grid-column: span 5; }
+.portfolio-item-1 { grid-column: span 7; }
+.portfolio-item-2 { grid-column: span 12; }
+.portfolio-item-3 { grid-column: span 7; }
+.portfolio-item-4 { grid-column: span 5; }
+.portfolio-item-5 { grid-column: span 12; }
+
+.portfolio-content {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #fff;
+  text-align: left;
+}
+
+.portfolio-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  z-index: 3; /* Ensures content is above the overlay */
+}
+
+.portfolio-category {
+  top: 20px;
+  left: 20px;
+  border-radius: 4px;
+  position: absolute;
+  text-transform: capitalize;
+}
+
+.portfolio-hashtags {
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  border-radius: 4px;
+  bottom: 20px;
+  left: 20px;
+  
+ 
+}
+.portfolio-item:hover .portfolio-hashtags .containerInfo1 ,
+.TouchCard .portfolio-hashtags .containerInfo1  {
+background:none;
+border:solid 2px #fff;
+padding: 8px 18px;
+}
+
+.cta-scroll1 {
+  margin-top: calc(4rem + 2vw);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cta-scroll1 span {
+  font-size: calc(0.8rem + 0.5vw);
+  margin-bottom: 0.5rem;
+  border: solid 2px;
+  border-radius: 30px;
+  padding: calc(0px + 1vw) calc(10px + 1vw);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+}
+
+.cta-scroll1 span:hover {
+  color: #fff;
+  background-color: #000;
+}
+
+.containerArrow2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #000;
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.containerArrow2 i {
+  display: block;
+  font-size: calc(10px + 1em);
+  transition: all 0.4s ease-in-out;
+  transform: rotateZ(135deg);
+  color: #fff;
+}
+
+.portfolio-item:hover .containerArrow2 i,
+.TouchCard .containerArrow2 i {
+  transform: rotateZ(-45deg);
+  color: #000;
+}
+
+.containerInfo1 {
+  padding: 10px 20px;
+  border-radius: 30px;
+  max-width: 150px;
+  background:#000;
+  
+}
+
+/* Responsive design */
+@media (max-width: 1024px) {
+  .portfolio {
+    grid-template-columns: 1fr;
+  }
+
+  .portfolio-item-0,
+  .portfolio-item-1,
+  .portfolio-item-2,
+  .portfolio-item-3,
+  .portfolio-item-4,
+  .portfolio-item-5 {
+    grid-column: span 1;
+  }
+}

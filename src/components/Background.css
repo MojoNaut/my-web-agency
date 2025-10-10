@@ -1,0 +1,100 @@
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes move {
+  0%, 100% {
+    transform: translate(var(--start-x), var(--start-y));
+  }
+  50% {
+    transform: translate(var(--end-x), var(--end-y));
+  }
+}
+
+@keyframes colorChange {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.bgStick {
+  position: fixed;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.gradient {
+  --size: 750px;
+  --speed: 50s;
+  --easing: cubic-bezier(0.8, 0.2, 0.2, 0.8);
+  --start-x: 0px;
+  --start-y: 0px;
+  --end-x: calc(100vw - var(--size));
+  --end-y: calc(100vh - var(--size));
+
+  position: absolute;
+  width: var(--size);
+  height: var(--size);
+  filter: blur(calc(var(--size) / 5));
+  border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  background-size: 200% 200%;
+  animation: rotate var(--speed) var(--easing) infinite,
+             move 20s ease-in-out infinite alternate,
+             colorChange 10s ease-in-out infinite alternate;
+}
+
+#gradient0 {
+  --start-x: 10%;
+  --start-y: 10%;
+  --end-x: 90%;
+  --end-y: 90%;
+  background-image: linear-gradient(hsl(340, 84%, 60%), hsl(320, 79%, 71%));
+  z-index: 1;
+}
+
+#gradient1 {
+  --start-x: 20%;
+  --start-y: 20%;
+  --end-x: 80%;
+  --end-y: 80%;
+  background-image: linear-gradient(hsl(260, 84%, 60%), hsl(240, 79%, 71%));
+  z-index: 2;
+}
+
+#gradient2 {
+  --start-x: 30%;
+  --start-y: 30%;
+  --end-x: 70%;
+  --end-y: 70%;
+  background-image: linear-gradient(hsl(190, 84%, 60%), hsl(170, 79%, 71%));
+  z-index: 3;
+}
+
+#gradient3 {
+  --start-x: 40%;
+  --start-y: 40%;
+  --end-x: 60%;
+  --end-y: 60%;
+  background-image: linear-gradient(hsl(220, 84%, 60%), hsl(200, 79%, 71%));
+  z-index: 4;
+}
+
+#gradient4 {
+  --start-x: 50%;
+  --start-y: 50%;
+  --end-x: 50%;
+  --end-y: 50%;
+  background-image: linear-gradient(hsl(200, 84%, 60%), hsl(180, 79%, 71%));
+  z-index: 5;
+}
