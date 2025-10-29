@@ -1,11 +1,14 @@
 import React from 'react';
-import './Header.css'; // if you have styles specific to the Header component
+import './Header.css';
 
 const Header = () => {
   return (
     <header>
-      <h1>My Web Agency</h1>
-      {/* Add navigation links here */}
+      <div className="logo">
+        <span className="logo-punto">punto</span>
+        <span className="logo-vista">vista</span>
+      </div>
+      {/* Navigation verrà aggiunta dopo */}
     </header>
   );
 };

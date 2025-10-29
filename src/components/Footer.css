@@ -1,0 +1,81 @@
+footer {
+  padding: 3rem 2rem 2rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#dark footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: baseline;
+}
+
+.footer-logo .logo-punto {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.footer-logo .logo-vista {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300;
+  font-size: 1.5rem;
+  color: #6B6B6B;
+}
+
+#dark .footer-logo .logo-punto {
+  color: #FFF;
+}
+
+#dark .footer-logo .logo-vista {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer-info {
+  text-align: right;
+}
+
+.footer-info p {
+  margin: 0.5rem 0;
+  font-size: 0.9rem;
+  color: #6B6B6B;
+}
+
+.footer-copyright {
+  text-align: center;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+#dark .footer-copyright {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-copyright p {
+  margin: 0;
+  font-size: 0.85rem;
+  color: #6B6B6B;
+}
+
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .footer-info {
+    text-align: center;
+  }
+}

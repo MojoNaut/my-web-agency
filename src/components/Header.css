@@ -1,14 +1,35 @@
-/* Example styles for Header component */
 header {
-    background-color: #f8f9fa;
-    padding: 1rem;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  h1 {
-    margin: 0;
-    font-size: 2rem;
-    color: #333;
-  }
-  
+  padding: 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: baseline;
+  gap: 0;
+}
+
+.logo-punto {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700; /* Bold */
+  font-size: 1.5rem;
+  color: #000;
+}
+
+.logo-vista {
+  font-family: 'Inter', sans-serif;
+  font-weight: 300; /* Light */
+  font-size: 1.5rem;
+  color: #6B6B6B;
+}
+
+/* Dark mode */
+#dark .logo-punto {
+  color: #FFF;
+}
+
+#dark .logo-vista {
+  color: rgba(255, 255, 255, 0.6);
+}
