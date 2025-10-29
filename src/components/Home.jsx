@@ -181,7 +181,7 @@ const Home = () => {
       <section className="">
       <div className="fixed-text1" ref={fixedText1Ref}>
             <h2 className="text">
-              <div className="line">what we do</div>
+              <div className="line">cosa facciamo</div>
             
             </h2>
           </div>
@@ -215,8 +215,8 @@ const Home = () => {
       <section className="">
         <div className="fixed-text3" ref={fixedText3Ref}>
           <h2 className="text">
-            <div className="line">have a look</div>
-            <div className="line">to our work</div>
+          <div className="line">i nostri</div>
+<div className="line">progetti</div>
           </h2>
         </div>
         <Portfolio />
