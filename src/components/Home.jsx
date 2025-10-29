@@ -159,17 +159,17 @@ const Home = () => {
       <section className="hero-section">
         <div className="fixed-text">
           <div className="textFixed">
-            <h1 className="text">
-              <div className="line">Meet your</div>
-              <div className="line">new digital</div>
-              <div className="line">partner</div>
-            </h1>
+          <h1 className="text">
+  <div className="line">Ogni brand</div>
+  <div className="line">merita il suo</div>
+  <div className="line">punto di vista</div>
+</h1>
           </div>
           <div className="scroll-text">
             <div className="textScroll">
               <h6 className="text">
-                We are a digital agency that breaks the mold. We help you grow and achieve results through beautifully crafted work that stands out from the crowd.
-              </h6>
+  Studio boutique di produzione video. Qualità cinematografica, narrazione su misura. Veneto, Italia.
+</h6>
             </div>
           </div>
           <div className="cta-scroll">
