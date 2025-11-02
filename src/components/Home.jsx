@@ -17,7 +17,7 @@ const Home = () => {
       if (scrollText) {
         scrollText.classList.add('animate');
       }
-    }, 500); // 0.5 second delay
+    }, 50); // 0.5 second delay
 
     return () => clearTimeout(timer); // Cleanup the timer
   }, []);
@@ -156,28 +156,52 @@ const Home = () => {
   return (
     <div>
       <Background />
-      <section className="hero-section">
-        <div className="fixed-text">
-          <div className="textFixed">
-          <h1 className="text">
-  <div className="line">Ogni brand</div>
-  <div className="line">merita il suo</div>
-  <div className="line">punto di vista</div>
-</h1>
-          </div>
-          <div className="scroll-text">
-            <div className="textScroll">
-              <h6 className="text">
-  Studio boutique di produzione video. Qualità cinematografica, narrazione su misura. Veneto, Italia.
-</h6>
-            </div>
-          </div>
-          <div className="cta-scroll">
-            <span className="ctaBColor ctaColor">Scroll Down</span>
-            <div className="arrow-down"></div>
-          </div>
+  <section className="hero-section">
+  <div className="hero-content">
+    
+    {/* VIDEO CARD FULL CON TESTO E CTA DENTRO */}
+    <div className="hero-video-card card-content">
+      
+      {/* VIDEO */}
+      <video 
+        className="hero-video"
+        autoPlay 
+        loop 
+        muted 
+        playsInline
+      >
+        <source 
+          src="https://cdn.prod.website-files.com/65f0eda4907429e328a9b8a2%2F67070fe8112f313490b381b6_Sparkhouse%20Website%20Banner%20Video%202024%20-30sec%20Handbrake-transcode.mp4" 
+          type="video/mp4" 
+        />
+        Your browser does not support the video tag.
+      </video>
+
+      {/* OVERLAY SCURO per leggibilità */}
+      <div className="hero-video-overlay"></div>
+
+      {/* CONTENUTO SOPRA IL VIDEO */}
+      <div className="hero-video-content">
+        
+        {/* TESTO ALTO SINISTRA */}
+        <div className="hero-text-inside">
+          <h1 className="hero-title-inside">
+            Ogni brand merita il suo punto di vista
+          </h1>
         </div>
-      </section>
+
+        {/* CTA SCROLL BASSO SINISTRA */}
+        <div className="cta-scroll-inside">
+          <span className="ctaBColor ctaColor">Scroll Down</span>
+          <div className="arrow-down"></div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>
       <section className="">
       <div className="fixed-text1" ref={fixedText1Ref}>
             <h2 className="text">
