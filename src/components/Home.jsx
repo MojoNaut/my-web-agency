@@ -1,9 +1,9 @@
 import React, { useEffect, useRef } from 'react';
 import Background from './Background';
-import Service from './Service';
 import Portfolio from './Portfolio';
 import CtaContact from './CtaContact';
 import './Home.css';
+import StickySections from './StickySections';
 
 const Home = () => {
   const fixedText1Ref = useRef(null);
@@ -157,6 +157,7 @@ const Home = () => {
     <div>
       <Background />
   <section className="hero-section">
+         
   <div className="hero-content">
     
     {/* VIDEO CARD FULL CON TESTO E CTA DENTRO */}
@@ -209,7 +210,7 @@ const Home = () => {
             
             </h2>
           </div>
-        <Service />
+     <StickySections />
       </section>
       <section className="">
         <div>

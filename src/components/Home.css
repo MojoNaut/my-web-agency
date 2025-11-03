@@ -389,9 +389,6 @@ hr.style4 {
   border-color: rgba(255, 255, 255, 1);
 }
 
-.ctaColor {
-  /* Text color già gestito in .cta-scroll-inside span */
-}
 
 #light .ctaColor {
   color: #000;
