@@ -1,6 +1,6 @@
 /* ================================
-   DEMO 8 STYLES
-   ================================ */
+   STICKY SERVICES SECTIONS - GLASS STYLE
+================================ */
 
 /* Loading state */
 body.loading {
@@ -25,28 +25,11 @@ body.loading::before {
   min-height: 100vh;
 }
 
-/* Intro section */
-.content--intro {
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2rem;
-}
-
-.text-large {
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 300;
-  text-align: center;
-  line-height: 1.2;
-  max-width: 1000px;
-}
-
 /* Cards container */
 .wrap {
   position: relative;
   width: 100%;
-  padding: 0 5vw;
+  padding: 0;
   margin-top: 20vh;
 }
 
@@ -56,66 +39,80 @@ body.loading::before {
   top: 10vh;
   width: 100%;
   max-width: 1400px;
-  height: 80vh;
-  margin: 0 auto 20vh;
+  margin: 0 auto 8vh;
   will-change: transform, filter;
+  overflow: hidden;
+  height: auto;
+  max-height: 700px;
 }
 
 .content--card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(25px);
+  -webkit-backdrop-filter: blur(25px);
   border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* Card inner structure */
 .content__inner {
-  width: 100%;
-  height: 100%;
-  padding: 60px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 60px;
   align-items: center;
+  gap: 60px;
+  padding: 60px;
+  height: 100%;
+  width: 100%;
 }
 
 /* Text content */
 .content__text-wrapper {
-  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 600px;
+  color: #000;
 }
 
 .content__title {
-  font-size: clamp(2.5rem, 4vw, 4rem);
+  font-size: clamp(2rem, 5vw, 3.5rem);
   font-weight: 700;
-  margin-bottom: 30px;
   line-height: 1.1;
-}
-
-.content__title i {
-  font-style: italic;
-  opacity: 0.6;
-}
-
-.content__tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 30px;
-}
-
-.tag {
-  padding: 8px 20px;
-  background: rgba(255, 255, 255, 0.2);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 25px;
-  font-size: 0.9rem;
-  color: white;
+  margin: 0;
 }
 
 .content__text {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   line-height: 1.6;
-  opacity: 0.9;
+  opacity: 0.85;
+  margin: 0;
+}
+
+/* Tags */
+.content__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  background: rgba(0, 0, 0, 0.85);
+  color: #fff;
+  padding: 8px 20px;
+  font-size: 0.85rem;
+  font-weight: 500;
+  border-radius: 25px;
+  border: none;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.tag:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
 /* Media content */
@@ -133,17 +130,11 @@ body.loading::before {
   object-fit: cover;
 }
 
-/* Background colors per card */
-.bg-1 {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-}
-
-.bg-2 {
-  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-}
-
-.bg-3 {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+/* Scroll space */
+.demo8-wrapper .wrap::after {
+  content: '';
+  display: block;
+  height: 60vh;
 }
 
 /* Responsive */
@@ -153,7 +144,7 @@ body.loading::before {
     grid-template-rows: auto 1fr;
     padding: 40px;
   }
-  
+
   .content__media {
     height: 300px;
   }
@@ -161,23 +152,23 @@ body.loading::before {
 
 @media (max-width: 768px) {
   .content--sticky {
-    height: 70vh;
+    height: auto;
     margin-bottom: 10vh;
   }
-  
+
   .content__inner {
     padding: 30px;
     gap: 30px;
   }
-  
+
   .content__title {
     font-size: 2rem;
   }
-  
+
   .content__media {
     height: 200px;
   }
-  
+
   .tag {
     font-size: 0.8rem;
     padding: 6px 15px;

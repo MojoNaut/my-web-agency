@@ -1,252 +1,96 @@
-/* HEADER BASE - NO FIXED, NO BACKGROUND */
 .header {
- position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
-  padding: 2rem;
-  transition: all 0.4s ease;
+  z-index: 999;
+  padding: 1.5rem 2rem;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.2);
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
 }
 
-/* WRAPPER (max-width come resto contenuto) */
 .header-wrapper {
-  max-width: 1600px;
-  margin: 0 auto;
-  position: relative;
-}
-
-.header-content {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 2rem;
-  padding: 0;
-  transition: all 0.4s ease;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* LOGO SVG */
 .logo {
-  flex-shrink: 0;
-  transition: all 0.4s ease;
-}
-
-.logo-placeholder {
   display: flex;
   align-items: baseline;
-  gap: 0;
 }
 
 .logo-punto {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 2rem;
+  font-weight: 800;
+  font-size: 1.8rem;
   color: #000;
-  transition: all 0.4s ease;
 }
 
 .logo-vista {
-  font-family: 'Inter', sans-serif;
   font-weight: 300;
-  font-size: 2rem;
-  color: #6B6B6B;
-  transition: all 0.4s ease;
+  font-size: 1.8rem;
+  color: #666;
+  margin-left: 4px;
 }
 
-#dark .logo-punto {
-  color: #FFF;
-}
-
-#dark .logo-vista {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* TAGLINE CENTRO */
-.header-tagline {
-  flex: 1;
-  text-align: center;
-  opacity: 1;
-  transition: opacity 0.3s ease;
-}
-
-.header-tagline p {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: calc(0.75rem + 0.2vw);
-  color: #6B6B6B;
-  margin: 0;
-  line-height: 1.4;
-}
-
-#dark .header-tagline p {
-  color: rgba(255, 255, 255, 0.7);
-}
-
-/* MENU BUTTON - FIXED (stile tag card) */
-.menu-button {
-  position: fixed;
-  top: 2rem;
-  right: 2rem;
-  z-index: 1001;
-  
-  font-family: 'Inter', sans-serif;
-  font-size: 1rem;
-  font-weight: 400;
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  border-radius: 2rem;
-  padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  color: #000;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-#dark .menu-button {
-  border-color: rgba(255, 255, 255, 0.3);
-  color: #FFF;
-  background: rgba(0, 0, 0, 0.9);
-}
-
-.menu-button:hover {
-  background: rgba(255, 255, 255, 1);
-  border-color: rgba(0, 0, 0, 0.5);
-  transform: translateY(-1px);
-  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-#dark .menu-button:hover {
-  background: rgba(0, 0, 0, 1);
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-/* Menu button quando aperto (effetto cartella) */
-.menu-button-open {
-  background: rgba(255, 255, 255, 1);
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom: none;
-}
-
-#dark .menu-button-open {
-  background: rgba(0, 0, 0, 1);
-}
-
-/* MENU DROPDOWN - FIXED (effetto cartella che scende) */
-.nav-menu {
-  position: fixed;
-  top: calc(2rem + 42px);
-  right: 2rem;
-  z-index: 1000;
-  
-  margin-top: -2px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 2px solid rgba(0, 0, 0, 0.3);
-  border-top: none;
-  box-shadow: 2px 4px 15px rgba(0, 0, 0, 0.2);
-  border-radius: 0 0 2rem 2rem;
-  border-top-right-radius: 0;
-  padding: 0.5rem 0 1.5rem;
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px);
-  transition: all 0.3s ease;
-  min-width: 180px;
-}
-
-#dark .nav-menu {
-  background: rgba(0, 0, 0, 0.95);
-  border-color: rgba(255, 255, 255, 0.3);
-}
-
-/* Menu visibile (scende smooth) */
-.nav-menu.menu-visible {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0);
-}
-
-.nav-menu ul {
+.nav ul {
+  display: flex;
+  gap: 2rem;
   list-style: none;
   margin: 0;
-  padding: 0 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
+  padding: 0;
 }
 
-.nav-menu li {
-  margin: 0;
-}
-
-.nav-menu a {
-  font-family: 'Inter', sans-serif;
-  font-weight: 400;
-  font-size: 1.1rem;
-  color: #000;
+.nav a {
   text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  color: #000;
   transition: color 0.2s ease;
-  display: block;
-  padding: 0.5rem 0;
 }
 
-#dark .nav-menu a {
-  color: #FFF;
+.nav a:hover {
+  color: #555;
 }
 
-.nav-menu a:hover {
-  color: #6B6B6B;
+/* Burger (visibile solo mobile) */
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
-#dark .nav-menu a:hover {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-/* RESPONSIVE - TABLET */
-@media (max-width: 1024px) {
-  .header-tagline p {
-    font-size: 0.75rem;
-  }
-
-  .menu-button {
-    padding: 8px 18px;
-    font-size: 0.95rem;
-  }
-}
-
-/* RESPONSIVE - MOBILE */
+/* Responsive */
 @media (max-width: 768px) {
-  .header {
+  .nav ul {
+    position: absolute;
+    top: 100%;
+    right: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 1rem;
+    backdrop-filter: blur(12px);
+    flex-direction: column;
     padding: 1rem;
-  }
-
-  .logo-punto,
-  .logo-vista {
-    font-size: 1.5rem;
-  }
-
-  .header-tagline {
+    gap: 1rem;
     display: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
 
-  .menu-button {
-    top: 1rem;
-    right: 1rem;
-    padding: 8px 16px;
-    font-size: 0.9rem;
+  .nav.open ul {
+    display: flex;
   }
 
-  .nav-menu {
-    top: calc(1rem + 38px);
-    right: 1rem;
-    min-width: 150px;
-  }
-
-  .nav-menu a {
-    font-size: 1rem;
+  .burger {
+    display: block;
   }
 }

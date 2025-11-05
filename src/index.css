@@ -4,9 +4,12 @@
     margin: 0;
    
 }
+html {
+  scroll-padding-top: 100px; /* Regola in base all'altezza del tuo header fisso */
+}
 
 section {
-    min-height: 100vh;
+
     height:100%;
     padding-left: calc(5vw + 10px);
   padding-right: calc(5vw + 10px);

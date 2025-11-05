@@ -1,254 +1,43 @@
-import React, { useEffect, useRef } from 'react';
+// Home.jsx
+import React from 'react';
+
 import Background from './Background';
-import Portfolio from './Portfolio';
-import CtaContact from './CtaContact';
-import './Home.css';
+import HeroSection from './HeroSection';
+import ProcessSection from './ProcessSection';
 import StickySections from './StickySections';
+import Portfolio from './Portfolio';
+
+
+import './Home.css';
 
 const Home = () => {
-  const fixedText1Ref = useRef(null);
-  const fixedText2Ref = useRef(null);
-  const fixedText3Ref = useRef(null);
-
-  useEffect(() => {
-    // Delay the addition of the animation class for scroll-text
-    const timer = setTimeout(() => {
-      const scrollText = document.querySelector('.scroll-text');
-      if (scrollText) {
-        scrollText.classList.add('animate');
-      }
-    }, 50); // 0.5 second delay
-
-    return () => clearTimeout(timer); // Cleanup the timer
-  }, []);
-
-  useEffect(() => {
-    // Animate fixed-text line by line
-    const lines = document.querySelectorAll('.fixed-text .line');
-    lines.forEach((line, index) => {
-      setTimeout(() => {
-        line.classList.add('animate');
-      }, index * 500); // Delay each line
-    });
-  }, []);
-
-  useEffect(() => {
-    // Intersection Observer to trigger animation when .fixed-text2 is in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const lines = entry.target.querySelectorAll('.line');
-            lines.forEach((line, index) => {
-              setTimeout(() => {
-                line.classList.add('animate');
-              }, index * 500); // Delay each line
-            });
-            observer.unobserve(entry.target); // Stop observing once animation is triggered
-          }
-        });
-      },
-      { threshold: 0.1 } // Trigger when 10% of the element is visible
-    );
-
-    if (fixedText2Ref.current) {
-      observer.observe(fixedText2Ref.current);
-    }
-
-    return () => {
-      if (fixedText2Ref.current) {
-        observer.unobserve(fixedText2Ref.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    // Intersection Observer to trigger animation when .fixed-text3 is in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const lines = entry.target.querySelectorAll('.line');
-            lines.forEach((line, index) => {
-              setTimeout(() => {
-                line.classList.add('animate');
-              }, index * 500); // Delay each line
-            });
-            observer.unobserve(entry.target); // Stop observing once animation is triggered
-          }
-        });
-      },
-      { threshold: 0.1 } // Trigger when 10% of the element is visible
-    );
-
-    if (fixedText3Ref.current) {
-      observer.observe(fixedText3Ref.current);
-    }
-
-    return () => {
-      if (fixedText3Ref.current) {
-        observer.unobserve(fixedText3Ref.current);
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    // Intersection Observer to trigger animation when .fixed-text3 is in view
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const lines = entry.target.querySelectorAll('.line');
-            lines.forEach((line, index) => {
-              setTimeout(() => {
-                line.classList.add('animate');
-              }, index * 500); // Delay each line
-            });
-            observer.unobserve(entry.target); // Stop observing once animation is triggered
-          }
-        });
-      },
-      { threshold: 0.1 } // Trigger when 10% of the element is visible
-    );
-
-    if (fixedText1Ref.current) {
-      observer.observe(fixedText1Ref.current);
-    }
-
-    return () => {
-      if (fixedText1Ref.current) {
-        observer.unobserve(fixedText1Ref.current);
-      }
-    };
-  }, []);
-
-  // New Intersection Observer for animateThingsMind
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const elements = entry.target.querySelectorAll('.thingsMind');
-            elements.forEach((element, index) => {
-              setTimeout(() => {
-                element.classList.add('animate');
-              }, index * 300); // Delay each element
-            });
-            observer.unobserve(entry.target); // Stop observing once animation is triggered
-          }
-        });
-      },
-      { threshold: 0.1 } // Trigger when 10% of the element is visible
-    );
-
-    const animateThingsMind = document.querySelector('.animateThingsMind');
-    if (animateThingsMind) {
-      observer.observe(animateThingsMind);
-    }
-
-    return () => {
-      if (animateThingsMind) {
-        observer.unobserve(animateThingsMind);
-      }
-    };
-  }, []);
 
   return (
     <div>
+      {/* BACKGROUND GLOBAL */}
       <Background />
-  <section className="hero-section">
-         
-  <div className="hero-content">
-    
-    {/* VIDEO CARD FULL CON TESTO E CTA DENTRO */}
-    <div className="hero-video-card card-content">
-      
-      {/* VIDEO */}
-      <video 
-        className="hero-video"
-        autoPlay 
-        loop 
-        muted 
-        playsInline
-      >
-        <source 
-          src="https://cdn.prod.website-files.com/65f0eda4907429e328a9b8a2%2F67070fe8112f313490b381b6_Sparkhouse%20Website%20Banner%20Video%202024%20-30sec%20Handbrake-transcode.mp4" 
-          type="video/mp4" 
-        />
-        Your browser does not support the video tag.
-      </video>
 
-      {/* OVERLAY SCURO per leggibilità */}
-      <div className="hero-video-overlay"></div>
+      {/* HERO */}
+      <HeroSection />
 
-      {/* CONTENUTO SOPRA IL VIDEO */}
-      <div className="hero-video-content">
-        
-        {/* TESTO ALTO SINISTRA */}
-        <div className="hero-text-inside">
-          <h1 className="hero-title-inside">
-            Ogni brand merita il suo punto di vista
-          </h1>
-        </div>
+      {/* PROCESS / PERCHÈ NOI */}
+      <ProcessSection />
 
-        {/* CTA SCROLL BASSO SINISTRA */}
-        <div className="cta-scroll-inside">
-          <span className="ctaBColor ctaColor">Scroll Down</span>
-          <div className="arrow-down"></div>
-        </div>
-
-      </div>
-
-    </div>
-
-  </div>
-</section>
-      <section className="">
-      <div className="fixed-text1" ref={fixedText1Ref}>
-            <h2 className="text">
-              <div className="line">cosa facciamo</div>
-            
-            </h2>
-          </div>
-     <StickySections />
+      {/* SERVIZI */}
+      <section id="services-section">
+        <StickySections />
       </section>
-      <section className="">
-        <div>
-          <div className="fixed-text2" ref={fixedText2Ref}>
-            <h2 className="text">
-              <div className="line">We dive into a</div>
-              <div className="line">project with three</div>
-              <div className="line">things in mind</div>
-            </h2>
-          </div>
-          <div className="text animateThingsMind">
-            <div className="thingsMind">
-              <div className="thingsTitle"><p>01/</p><h3>Beauty</h3></div><div className="thingsText"><h4>Developing stunning one-of-a-kind digital design that catches people’s eyes and brings your brand to life online.</h4></div>
-            </div>
-            <hr className="style4 text"></hr>
-            <div className="thingsMind">
-              <div className="thingsTitle"><p>02/</p><h3>Thought</h3></div><div className="thingsText"><h4>Developing stunning one-of-a-kind digital design that catches people’s eyes and brings your brand to life online.</h4></div>
-            </div>
-            <hr className="style4 text"></hr>
-            <div className="thingsMind">
-              <div className="thingsTitle"><p>03/</p><h3>Result</h3></div><div className="thingsText"><h4>Developing stunning one-of-a-kind digital design that catches people’s eyes and brings your brand to life online.</h4></div>
-            </div>
-            <hr className="style4 text"></hr>
-          </div>
-        </div>
-      </section>
-      <section className="">
-        <div className="fixed-text3" ref={fixedText3Ref}>
-          <h2 className="text">
-          <div className="line">i nostri</div>
-<div className="line">progetti</div>
-          </h2>
-        </div>
+
+      {/* WORK / PORTFOLIO */}
+      <section id="portfolio-section">
         <Portfolio />
       </section>
-      <section className="">
-        <CtaContact />
+
+      {/* CONTATTI */}
+      <section id="contact-section">
+  
       </section>
+
     </div>
   );
 };
