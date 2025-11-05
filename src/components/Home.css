@@ -11,6 +11,26 @@ section {
   max-width: 1400px;
   margin: 0 auto;
 }
+.home-section {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: left;
+  color: #000;
+}
+
+#dark .section-title {
+  color: #fff;
+}
+
 
 /* Responsive per sezioni */
 @media (max-width: 480px) {
