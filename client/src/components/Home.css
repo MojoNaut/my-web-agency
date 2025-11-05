@@ -1,0 +1,53 @@
+/* ============================================
+   HOME LAYOUT BASE (common section styling)
+============================================ */
+
+/* Sezione generica layout */
+section {
+  padding-left: calc(5vw + 10px);
+  padding-right: calc(5vw + 10px);
+  padding-top: calc(3vw + 10px);
+  padding-bottom: calc(3vw + 10px);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+/* Home.css - Aggiungi alla fine */
+
+/* Ottimizzazione animazioni titoli */
+.section-title[data-animate="slideIn"] {
+  will-change: opacity, transform;
+}
+.home-section {
+  padding: 6rem 2rem;
+  position: relative;
+}
+
+.section-header {
+  margin-bottom: 3rem;
+}
+
+.section-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+  font-weight: 600;
+  text-align: left;
+  color: #000;
+  opacity: 1; /* ⭐ VISIBILE di default */
+  transform: translateY(0); /* ⭐ Posizione normale */
+}
+
+#dark .section-title {
+  color: #fff;
+}
+
+
+/* Responsive per sezioni */
+@media (max-width: 480px) {
+  section {
+    min-height: 100vh;
+    height: 100%;
+    padding-left: calc(2vw + 10px);
+    padding-right: calc(2vw + 10px);
+    padding-top: calc(2vw + 10px);
+    padding-bottom: calc(2vw + 10px);
+  }
+}
