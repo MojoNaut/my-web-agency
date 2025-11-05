@@ -1,4 +1,13 @@
+/* ============================================
+   HERO SECTION - Testo pulito sopra overlay
+============================================ */
+
 .hero-section {
+  /* Override Home.css */
+  padding: 0 !important;
+  max-width: none !important;
+  margin: 0 !important;
+  
   position: relative;
   width: 100%;
   height: 100vh;
@@ -15,16 +24,21 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 0 2rem;
 }
 
 .hero-video-card {
-  position: relative;
-  width: 90%;
+  position: absolute; /* ⭐ CAMBIATO da relative a absolute */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* ⭐ Centro perfetto */
+  width: 100%;
+  max-width: 1400px;
   height: 80vh;
   border-radius: 35px;
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-  z-index: 1;
+  z-index: 1; /* ⭐ Video sotto */
 }
 
 .hero-video {
@@ -49,31 +63,34 @@
     rgba(0, 0, 0, 0.3),
     rgba(0, 0, 0, 0.1)
   );
-  z-index: 2;
+  z-index: 2; /* ⭐ Overlay dentro la card */
+  pointer-events: none; /* ⭐ Non blocca interazioni */
 }
 
 .hero-video-content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
+  position: relative; /* ⭐ CAMBIATO da absolute a relative */
+  z-index: 10; /* ⭐ SOPRA tutto - molto più alto */
   width: 100%;
-  height: 100%;
-  padding: 4rem 3rem;
+  max-width: 1400px; /* ⭐ Stesso max-width della card */
+  padding: 0;
   color: #fff;
-  text-align: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start; /* ⭐ Allineato in alto */
   align-items: center;
+  padding-top: calc(10vh); /* ⭐ Spazio dall'alto (corrisponde al tuo top: 10%) */
   will-change: opacity, transform;
 }
 
 .hero-title-inside {
-  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-size: clamp(2rem, 4.5vw, 5rem);
   line-height: 1.2;
   margin-bottom: 2rem;
   font-weight: 400;
+  max-width: 900px;
+  text-align: center;
+  word-wrap: break-word;
+  /* ⭐ Nessun text-shadow, testo pulito! */
 }
 
 .cta-scroll-inside {
@@ -88,32 +105,53 @@
   border-radius: 30px;
   font-size: 1rem;
   cursor: pointer;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.1);
   backdrop-filter: blur(10px);
   color: #fff;
   transition: all 0.3s ease;
+  /* ⭐ Nessuna shadow, bottoni puliti! */
 }
 
 .cta-scroll-inside button:hover {
-  background: rgba(255, 255, 255, 0.2);
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
-  .hero-video-content {
-    padding: 2rem;
+  .hero-video-card {
+    width: 95%;
+    height: 75vh;
   }
-
+  
+  .hero-video-content {
+    padding-top: 8vh;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  
   .hero-title-inside {
     font-size: clamp(1.8rem, 6vw, 2.5rem);
   }
-
+  
   .cta-scroll-inside {
     flex-direction: column;
     gap: 0.5rem;
   }
-
+  
   .cta-scroll-inside button {
     width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-video-card {
+    width: 96%;
+    height: 70vh;
+    border-radius: 25px;
+  }
+  
+  .hero-video-content {
+    padding-top: 6vh;
   }
 }

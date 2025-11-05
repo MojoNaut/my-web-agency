@@ -7,12 +7,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 const HeroSection = () => {
   const containerRef = useRef(null);
-  const videoCardRef = useRef(null);
+  const videoRef = useRef(null);
   const contentRef = useRef(null);
 
   useEffect(() => {
     const container = containerRef.current;
-    const card = videoCardRef.current;
+    const video = videoRef.current;
     const content = contentRef.current;
 
     const tl = gsap.timeline({
@@ -25,9 +25,9 @@ const HeroSection = () => {
       }
     });
 
-    tl.fromTo(card,
-      { scale: 0.85, opacity: 0.8 },
-      { scale: 1.1, opacity: 1, ease: "none" }
+    tl.fromTo(video,
+      { scale: 0.8, opacity: 0.7 },
+      { scale: 1.2, opacity: 1, ease: "none" }
     )
     .fromTo(content,
       { opacity: 1, y: 0, scale: 1 },
@@ -43,7 +43,8 @@ const HeroSection = () => {
   return (
     <section className="hero-section" id="hero" ref={containerRef}>
       <div className="hero-content">
-        <div className="hero-video-card" ref={videoCardRef}>
+        {/* ⭐ Video card con overlay - SEPARATO dal contenuto */}
+        <div className="hero-video-card" ref={videoRef}>
           <video
             className="hero-video"
             autoPlay
@@ -56,21 +57,27 @@ const HeroSection = () => {
               type="video/mp4"
             />
           </video>
-
           <div className="hero-video-overlay"></div>
+        </div>
 
-          <div className="hero-video-content" ref={contentRef}>
-            <h1 className="hero-title-inside">
-              Produciamo video con <span className="highlight">anima</span> e <span className="highlight">impatto</span>
-            </h1>
-            <div className="cta-scroll-inside">
-              <button className="ctaBColor ctaColor" onClick={() => document.getElementById('section-process')?.scrollIntoView({ behavior: 'smooth' })}>
-                Scopri di più
-              </button>
-              <button className="ctaBColor ctaColor" onClick={() => document.getElementById('portfolio-section')?.scrollIntoView({ behavior: 'smooth' })}>
-                Guarda i progetti
-              </button>
-            </div>
+        {/* ⭐ Contenuto testuale - FUORI dalla card, SOPRA tutto */}
+        <div className="hero-video-content" ref={contentRef}>
+          <h1 className="hero-title-inside">
+            Produciamo video con <span className="highlight">anima</span> e <span className="highlight">impatto</span>
+          </h1>
+          <div className="cta-scroll-inside">
+            <button
+              className="ctaBColor ctaColor"
+              onClick={() => document.getElementById('section-process')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Scopri di più
+            </button>
+            <button
+              className="ctaBColor ctaColor"
+              onClick={() => document.getElementById('portfolio-section')?.scrollIntoView({ behavior: 'smooth' })}
+            >
+              Guarda i progetti
+            </button>
           </div>
         </div>
       </div>
