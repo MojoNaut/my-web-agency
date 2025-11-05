@@ -1,81 +1,170 @@
-footer {
-  padding: 3rem 2rem 2rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
+/* ============================================
+   FOOTER - Stile minimalista Studio Homais
+============================================ */
+
+.footer {
+  background-color: #000;
+  color: #fff;
+  padding: clamp(4rem, 8vw, 8rem) clamp(2rem, 5vw, 5rem);
+  position: relative;
 }
 
-#dark footer {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+.footer-container {
+  max-width: 1400px;
+  margin: 0 auto;
 }
+
+/* ============================================
+   HEADER - Brand grande
+============================================ */
+
+.footer-header {
+  margin-bottom: clamp(4rem, 8vw, 8rem);
+}
+
+.footer-brand {
+  font-size: clamp(3rem, 12vw, 10rem);
+  font-weight: 700;
+  line-height: 0.9;
+  margin: 0;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.footer-brand-punto {
+  display: block;
+}
+
+.footer-brand-vista {
+  display: block;
+}
+
+/* ============================================
+   CONTENT - 3 Colonne
+============================================ */
 
 .footer-content {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 4rem;
+  margin-bottom: clamp(4rem, 8vw, 8rem);
 }
 
-.footer-logo {
-  display: flex;
-  align-items: baseline;
+/* Reset list */
+.footer-nav ul,
+.footer-social ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.footer-logo .logo-punto {
-  font-family: 'Inter', sans-serif;
-  font-weight: 700;
-  font-size: 1.5rem;
-  color: #000;
+.footer-nav li,
+.footer-social li {
+  margin-bottom: 0.75rem;
 }
 
-.footer-logo .logo-vista {
-  font-family: 'Inter', sans-serif;
-  font-weight: 300;
-  font-size: 1.5rem;
-  color: #6B6B6B;
+.footer-nav a,
+.footer-social a,
+.footer-info a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.125rem;
+  font-weight: 400;
+  transition: opacity 0.3s ease;
 }
 
-#dark .footer-logo .logo-punto {
-  color: #FFF;
+.footer-nav a:hover,
+.footer-social a:hover,
+.footer-info a:hover {
+  opacity: 0.6;
 }
 
-#dark .footer-logo .logo-vista {
-  color: rgba(255, 255, 255, 0.6);
-}
-
+/* Info column */
 .footer-info {
-  text-align: right;
+  font-size: 1.125rem;
+  line-height: 1.6;
 }
 
 .footer-info p {
-  margin: 0.5rem 0;
-  font-size: 0.9rem;
-  color: #6B6B6B;
+  margin: 0 0 0.5rem 0;
+}
+
+.footer-email,
+.footer-phone {
+  margin-top: 1.5rem !important;
+}
+
+/* ============================================
+   BOTTOM - Copyright
+============================================ */
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 2rem;
 }
 
 .footer-copyright {
-  text-align: center;
-  padding-top: 1rem;
-  border-top: 1px solid rgba(0, 0, 0, 0.1);
-}
-
-#dark .footer-copyright {
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer-copyright p {
+  font-size: 0.875rem;
   margin: 0;
-  font-size: 0.85rem;
-  color: #6B6B6B;
+  opacity: 0.6;
 }
 
-@media (max-width: 768px) {
+.footer-dot {
+  font-size: 2rem;
+  opacity: 0.3;
+  line-height: 1;
+}
+
+/* ============================================
+   RESPONSIVE
+============================================ */
+
+@media (max-width: 1024px) {
   .footer-content {
-    flex-direction: column;
-    text-align: center;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
   }
   
   .footer-info {
-    text-align: center;
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 3rem 2rem;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  
+  .footer-brand {
+    font-size: clamp(2.5rem, 10vw, 5rem);
+  }
+  
+  .footer-nav a,
+  .footer-social a,
+  .footer-info {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .footer {
+    padding: 2.5rem 1.5rem;
+  }
+  
+  .footer-header {
+    margin-bottom: 3rem;
+  }
+  
+  .footer-content {
+    margin-bottom: 3rem;
+    gap: 2.5rem;
   }
 }
