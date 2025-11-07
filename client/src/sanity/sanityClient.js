@@ -1,11 +1,12 @@
 import { createClient } from '@sanity/client';
 
 const client = createClient({
-  projectId: '4ifwdpth',
-  dataset: 'production',
-  apiVersion: '2023-01-01', // Usa una versione API recente
-  useCdn: true, // false se desideri garantire dati freschi
-  
+  projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
+  dataset: process.env.REACT_APP_SANITY_DATASET,
+  apiVersion: process.env.REACT_APP_SANITY_API_VERSION,
+  useCdn: true,
+  // se hai un token:
+  // token: process.env.REACT_APP_SANITY_WRITE_TOKEN,
 });
 
 export default client;
