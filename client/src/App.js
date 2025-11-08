@@ -1,3 +1,4 @@
+// client/src/App.js 
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
@@ -11,9 +12,10 @@ export const ThemeContext = createContext(null);
 function App() {
   const [theme, setTheme] = useState("light");
 
-  const toggleTheme = () => {
-    setTheme((curr) => (curr === "light" ? "dark" : "light"));
-  }
+ // const toggleTheme = () => {
+//   setTheme((curr) => (curr === "light" ? "dark" : "light"));
+// }
+
   return (
     <ThemeContext.Provider value={{ theme, setTheme}}>
     <Router>
