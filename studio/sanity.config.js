@@ -1,3 +1,5 @@
+// studio/sanity.config.js
+
 import {defineConfig} from 'sanity';
 import {deskTool} from 'sanity/desk';
 import {visionTool} from '@sanity/vision';
@@ -8,7 +10,7 @@ export default defineConfig({
   dataset: 'production',
   title: 'Dotships Studio',
   apiVersion: '2023-01-01',
-  basePath: '/studio',
+  basePath: '/',
   plugins: [deskTool(), visionTool()],
   schema: {
     types: schemaTypes,  // Assicurati di usare il named export
