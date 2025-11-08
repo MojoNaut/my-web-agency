@@ -1,12 +1,12 @@
-import { createClient } from '@sanity/client';
+// client/src/sanity/sanityClient.js
 
-const client = createClient({
+// client/src/sanity/sanityClient.js
+import { createClient } from "@sanity/client";
+
+export const sanityClient = createClient({
   projectId: process.env.REACT_APP_SANITY_PROJECT_ID,
   dataset: process.env.REACT_APP_SANITY_DATASET,
-  apiVersion: process.env.REACT_APP_SANITY_API_VERSION,
-  useCdn: true,
-  // se hai un token:
-  // token: process.env.REACT_APP_SANITY_WRITE_TOKEN,
+  apiVersion: process.env.REACT_APP_SANITY_API_VERSION || "2023-01-01",
+  useCdn: process.env.NODE_ENV === "production",
+  perspective: "published",
 });
-
-export default client;

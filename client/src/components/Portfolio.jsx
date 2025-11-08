@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import sanityClient from '../sanity/sanityClient';
+import { fetchPortfolio } from "../sanity/queries";
 import './Portfolio.css';
 
 const Portfolio = () => {
@@ -8,29 +8,18 @@ const Portfolio = () => {
   const [error, setError] = useState(null);
   const [itemsToShow, setItemsToShow] = useState(6);
 
-  useEffect(() => {
-    const query = `*[_type == "portfolioItem"]{
-      _id,
-      title,
-      description,
-      category,
-      hashtags,
-      link,
-      "imageUrl": image.asset->url,
-      "hoverImageUrl": hoverImage.asset->url
-    }`;
+ useEffect(() => {
+  fetchPortfolio()
+    .then((data) => {
+      setPortfolioItems(data);
+      setLoading(false);
+    })
+    .catch((error) => {
+      setError(error);
+      setLoading(false);
+    });
+}, []);
 
-    sanityClient.fetch(query)
-      .then((data) => {
-        console.log('Portfolio Items:', data);  // Log the data
-        setPortfolioItems(data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setError(error);
-        setLoading(false);
-      });
-  }, []);
 
   const loadMoreItems = () => {
     setItemsToShow(itemsToShow + 6);

@@ -5,12 +5,12 @@
   "main": "package.json",
   "license": "UNLICENSED",
   "scripts": {
-    "dev": "sanity dev",
-    "start": "sanity start",
-    "build": "sanity build",
-    "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
-  },
+  "dev": "sanity dev",
+  "build": "sanity build",
+  "start": "serve -s dist -l $PORT",
+  "deploy": "sanity deploy",
+  "deploy-graphql": "sanity graphql deploy"
+},
   "keywords": [
     "sanity"
   ],
@@ -19,6 +19,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "sanity": "^3.57.2",
+    "serve": "^14.2.5",
     "styled-components": "^6.1.8"
   },
   "devDependencies": {
