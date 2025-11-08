@@ -6,13 +6,12 @@ import {visionTool} from '@sanity/vision';
 import {schemaTypes} from './schemaTypes';  // Named import
 
 export default defineConfig({
-projectId: process.env.SANITY_STUDIO_PROJECT_ID,
-dataset: process.env.SANITY_STUDIO_DATASET,
+  projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+  dataset: process.env.SANITY_STUDIO_DATASET,
   title: 'Dotships Studio',
   apiVersion: '2023-01-01',
-  basePath: '/',
+  basePath: '/',        // FIX definitivo
   plugins: [deskTool(), visionTool()],
-  schema: {
-    types: schemaTypes,  // Assicurati di usare il named export
-  },
-});
+  schema: { types: schemaTypes },
+})
+
