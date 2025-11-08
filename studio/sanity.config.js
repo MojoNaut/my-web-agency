@@ -6,8 +6,8 @@ import {visionTool} from '@sanity/vision';
 import {schemaTypes} from './schemaTypes';  // Named import
 
 export default defineConfig({
-  projectId: '4ifwdpth',
-  dataset: 'production',
+projectId: process.env.SANITY_STUDIO_PROJECT_ID,
+dataset: process.env.SANITY_STUDIO_DATASET,
   title: 'Dotships Studio',
   apiVersion: '2023-01-01',
   basePath: '/',
