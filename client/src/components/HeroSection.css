@@ -1,13 +1,13 @@
-/* ============================================
-   HERO SECTION - Testo pulito sopra overlay
-============================================ */
+/* client/src/components/HeroSection.css */
 
+/* ─────────────────────────────
+   BASE STRUCTURE
+───────────────────────────── */
 .hero-section {
-  /* Override Home.css */
   padding: 0 !important;
   max-width: none !important;
   margin: 0 !important;
-  
+
   position: relative;
   width: 100%;
   height: 100vh;
@@ -27,18 +27,19 @@
   padding: 0 2rem;
 }
 
+/* ─────────────────────────────
+   VIDEO CARD (FULL → SHRINK)
+───────────────────────────── */
 .hero-video-card {
-  position: absolute; /* ⭐ CAMBIATO da relative a absolute */
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* ⭐ Centro perfetto */
-  width: 100%;
-  max-width: 1400px;
-  height: 80vh;
-  border-radius: 35px;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  height: 100vh;
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-  z-index: 1; /* ⭐ Video sotto */
+  z-index: 1;
 }
 
 .hero-video {
@@ -56,32 +57,38 @@
   left: 0;
   width: 100%;
   height: 100%;
-  border-radius: 35px;
+  border-radius: 0;
   background: linear-gradient(
     135deg,
     rgba(0, 0, 0, 0.6),
     rgba(0, 0, 0, 0.3),
     rgba(0, 0, 0, 0.1)
   );
-  z-index: 2; /* ⭐ Overlay dentro la card */
-  pointer-events: none; /* ⭐ Non blocca interazioni */
+  z-index: 2;
+  pointer-events: none;
 }
 
+/* ─────────────────────────────
+   TEXT + CTA CONTENT
+───────────────────────────── */
 .hero-video-content {
-  position: relative; /* ⭐ CAMBIATO da absolute a relative */
-  z-index: 10; /* ⭐ SOPRA tutto - molto più alto */
+  position: absolute;
+  z-index: 10;
   width: 100%;
-  max-width: 1400px; /* ⭐ Stesso max-width della card */
-  padding: 0;
+  max-width: 1400px;
   color: #fff;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start; /* ⭐ Allineato in alto */
+  justify-content: center;
   align-items: center;
-  padding-top: calc(10vh); /* ⭐ Spazio dall'alto (corrisponde al tuo top: 10%) */
   will-change: opacity, transform;
+
+  /* Default = Desktop (62%) */
+  top: 62%;
+  transform: translateY(-62%);
 }
 
+/* TITOLI */
 .hero-title-inside {
   font-size: clamp(2rem, 4.5vw, 5rem);
   line-height: 1.2;
@@ -90,9 +97,9 @@
   max-width: 900px;
   text-align: center;
   word-wrap: break-word;
-  /* ⭐ Nessun text-shadow, testo pulito! */
 }
 
+/* CTA BUTTONS */
 .cta-scroll-inside {
   display: flex;
   gap: 1rem;
@@ -105,53 +112,63 @@
   border-radius: 30px;
   font-size: 1rem;
   cursor: pointer;
-  border: 1px solid rgba(255,255,255,0.7);
-  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   color: #fff;
   transition: all 0.3s ease;
-  /* ⭐ Nessuna shadow, bottoni puliti! */
 }
 
 .cta-scroll-inside button:hover {
-  background: rgba(255,255,255,0.2);
+  background: rgba(255, 255, 255, 0.2);
   transform: translateY(-2px);
 }
 
-@media (max-width: 768px) {
-  .hero-video-card {
-    width: 95%;
-    height: 75vh;
-  }
-  
+/* ─────────────────────────────
+   RESPONSIVE BREAKPOINTS
+───────────────────────────── */
+
+/* Tablet (768px–1199px) → 55% */
+@media (min-width: 768px) and (max-width: 1199px) {
   .hero-video-content {
-    padding-top: 8vh;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    top: 55%;
+    transform: translateY(-55%);
   }
-  
+}
+
+/* Mobile (<768px) → 50% */
+@media (max-width: 767px) {
+  .hero-video-card {
+    width: 100%;
+    height: 100vh;
+    border-radius: 0;
+  }
+
+  .hero-video-content {
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 2rem;
+  }
+
   .hero-title-inside {
     font-size: clamp(1.8rem, 6vw, 2.5rem);
   }
-  
+
   .cta-scroll-inside {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.75rem;
   }
-  
+
   .cta-scroll-inside button {
     width: 100%;
   }
 }
 
+/* Small phones (<480px) */
 @media (max-width: 480px) {
-  .hero-video-card {
-    width: 96%;
-    height: 70vh;
-    border-radius: 25px;
-  }
-  
   .hero-video-content {
-    padding-top: 6vh;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 0 1.5rem;
   }
 }

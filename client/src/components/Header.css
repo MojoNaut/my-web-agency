@@ -1,19 +1,20 @@
+/* ================================
+   HEADER — BASE NEUTRO
+   (nessun background/blur/shadow qui)
+=================================== */
 .header {
   position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 0; left: 0; width: 100%;
   z-index: 999;
-  padding: 1.5rem 2rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.2);
-  border-bottom-left-radius: 35px;
-  border-bottom-right-radius: 35px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  /* niente bg/blur/shadow sul base */
+  transition:
+    background 250ms ease,
+    backdrop-filter 250ms ease,
+    box-shadow 250ms ease,
+    color 250ms ease;
 }
 
+/* contenitore */
 .header-wrapper {
   display: flex;
   justify-content: space-between;
@@ -21,76 +22,137 @@
   max-width: 1400px;
   margin: 0 auto;
   width: 100%;
+  padding: 1.25rem 2rem;
 }
 
+/* logo tipografico (fallback) */
 .logo {
   display: flex;
   align-items: baseline;
+  gap: .25rem;
 }
-
 .logo-punto {
   font-weight: 800;
   font-size: 1.8rem;
-  color: #000;
 }
-
 .logo-vista {
   font-weight: 300;
   font-size: 1.8rem;
-  color: #666;
-  margin-left: 4px;
+  opacity: .9;
 }
 
+/* supporto SVG logo: eredita il colore corrente */
+.logo svg,
+.logo svg * {
+  fill: currentColor !important;
+  stroke: currentColor !important;
+}
+
+/* nav orizzontale desktop */
 .nav ul {
   display: flex;
   gap: 2rem;
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
 }
-
 .nav a {
   text-decoration: none;
   font-weight: 500;
   font-size: 1rem;
-  color: #000;
-  transition: color 0.2s ease;
+  color: currentColor;            /* eredita dal container header */
+  opacity: .95;
+  transition: opacity .2s ease;
 }
+.nav a:hover { opacity: 1; }
 
-.nav a:hover {
-  color: #555;
-}
-
-/* Burger (visibile solo mobile) */
+/* Burger (mobile/tablet) */
 .burger {
   display: none;
   background: none;
-  border: none;
-  font-size: 1.5rem;
+  border: 1px solid currentColor;
+  color: currentColor;
+  border-radius: 999px;
+  font-size: .95rem;
+  padding: .35rem .75rem;
   cursor: pointer;
+  line-height: 1;
 }
 
-/* Responsive */
-@media (max-width: 768px) {
+/* ================================
+   STATI HEADER
+   - hero-state: overlay trasparente, colori chiari
+   - card-state: glass bianco, colori scuri
+=================================== */
+.header.hero-state {
+  background: transparent;
+  backdrop-filter: none;
+  box-shadow: none;
+  color: #ffffff;                  /* TUTTO bianco (logo/burger/nav) */
+}
+
+.header.card-state {
+  background: rgba(255,255,255,0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.10);
+  color: #111111;                  /* TUTTO scuro (logo/burger/nav) */
+  border-bottom-left-radius: 28px;
+  border-bottom-right-radius: 28px;
+}
+
+/* opzionale: micro elevazione al passaggio mouse su desktop */
+@media (hover:hover) and (pointer:fine) {
+  .header.card-state:hover {
+    box-shadow: 0 10px 28px rgba(0,0,0,0.12);
+  }
+}
+
+/* ================================
+   RESPONSIVE
+=================================== */
+@media (max-width: 1199px) {
+  /* Mobile & Tablet:
+     - nessuna animazione header
+     - default = hero-state (logo/menu bianchi su video full)
+  */
   .nav ul {
     position: absolute;
     top: 100%;
-    right: 2rem;
-    background: rgba(255, 255, 255, 0.95);
-    border-radius: 1rem;
+    right: 1.25rem;
+    background: rgba(255,255,255,0.95);
+    border-radius: 14px;
     backdrop-filter: blur(12px);
-    flex-direction: column;
-    padding: 1rem;
-    gap: 1rem;
+    padding: .85rem;
+    gap: .75rem;
     display: none;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+    min-width: 180px;
   }
 
-  .nav.open ul {
-    display: flex;
+  .nav.open ul { display: flex; flex-direction: column; }
+
+  .burger { display: inline-flex; align-items: center; gap: .5rem; }
+
+  /* Richiesta: icona/scritta “menu” con bordo bianco + testo nero in HERO
+     — usiamo pill trasparente col bordo corrente (bianco), testo nero
+  */
+  .header.hero-state .burger {
+    border-color: #ffffff;
+    color: #111111;                /* testo nero come richiesto */
+    background: rgba(255,255,255,0.1);
   }
 
-  .burger {
-    display: block;
+  /* In card-state tutto scuro su glass bianco */
+  .header.card-state .burger {
+    border-color: #111111;
+    color: #111111;
+    background: rgba(255,255,255,0.6);
   }
+}
+
+/* Piccoli affinamenti tipografici */
+@media (max-width: 768px) {
+  .header-wrapper { padding: 1rem 1.25rem; }
+  .logo-punto, .logo-vista { font-size: 1.5rem; }
+  .nav a { font-size: .95rem; }
 }
