@@ -8,7 +8,20 @@ section {
   padding-right: calc(5vw + 10px);
   padding-top: calc(3vw + 10px);
   padding-bottom: calc(3vw + 10px);
-  max-width: 1400px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+#services-section {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  max-width: 100% !important; /* ⭐ Full width */
+    position: relative; /* ⭐ Per z-index */
+}
+
+#services-section .section-header {
+  padding-left: calc(5vw + 10px);
+  padding-right: calc(5vw + 10px);
+  max-width: 1600px;
   margin: 0 auto;
 }
 /* Home.css - Aggiungi alla fine */
@@ -31,12 +44,22 @@ section {
   font-weight: 600;
   text-align: left;
   color: #000;
-  opacity: 1; /* ⭐ VISIBILE di default */
-  transform: translateY(0); /* ⭐ Posizione normale */
+  opacity: 1; 
+  transform: translateY(0); 
+}
+.sticky-title {
+  position: sticky;
+  top: 15vh;
+  z-index: 20;
+  transition: top 0.3s ease;
+  padding: 1rem 0;
 }
 
 #dark .section-title {
   color: #fff;
+}
+.section-process-container {
+  /* Mantiene il padding normale */
 }
 
 
@@ -49,5 +72,14 @@ section {
     padding-right: calc(2vw + 10px);
     padding-top: calc(2vw + 10px);
     padding-bottom: calc(2vw + 10px);
+  }
+    #services-section {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  #services-section .section-header {
+    padding-left: calc(2vw + 10px);
+    padding-right: calc(2vw + 10px);
   }
 }

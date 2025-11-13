@@ -1,59 +1,64 @@
 /* ================================
-   STICKY SERVICES SECTIONS - GLASS STYLE
+   STICKY SERVICES SECTIONS - STACK
 ================================ */
 
-/* Loading state */
-body.loading {
-  overflow: hidden;
-}
-
-body.loading::before {
-  content: '';
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #fff;
-  z-index: 9999;
-}
-
-/* Main wrapper */
+/* Wrapper principale della sezione */
 .demo8-wrapper {
   position: relative;
   width: 100%;
   min-height: 100vh;
 }
 
-/* Cards container */
-.wrap {
+/* Contenuto interno centrato */
+.sticky-services-content {
+  position: relative;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 4rem 2rem 6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+   min-height: 100vh;           /* ✅ Altezza minima viewport */
+  justify-content: center;     /* ✅ Centra verticalmente */
+}
+
+/* Titolo sezione – fisso in alto mentre la sezione è pinnata */
+.sticky-services-title {
+  position: relative;
+  z-index: 5;
+}
+
+.sticky-services-title .section-title {
+  margin: 0;
+}
+
+/* Area in cui le card si stackano una sopra l’altra */
+.cards-stack {
   position: relative;
   width: 100%;
-  padding: 0;
-  margin-top: 20vh;
+  height: 620px; 
+  min-height: unset;
+  
 }
 
-/* Sticky cards */
-.content--sticky {
-  position: sticky;
-  top: 10vh;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto 8vh;
-  will-change: transform, filter;
-  overflow: hidden;
-  height: auto;
-  max-height: 700px;
-}
-
+/* Ogni card è posizionata una sopra l’altra nello stack */
 .content--card {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(25px);
-  -webkit-backdrop-filter: blur(25px);
-  border-radius: 30px;
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: 28px;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+
+  /* Stato base (non attiva) — viene poi sovrascritto da GSAP */
+  transform: scale(0.96) translateY(8px);
+  opacity: 0;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18);
+  transition:
+    box-shadow 0.35s ease,
+    background 0.35s ease;
 }
 
 /* Card inner structure */
@@ -67,7 +72,7 @@ body.loading::before {
   width: 100%;
 }
 
-/* Text content */
+/* Testo */
 .content__text-wrapper {
   display: flex;
   flex-direction: column;
@@ -88,6 +93,11 @@ body.loading::before {
   line-height: 1.6;
   opacity: 0.85;
   margin: 0;
+}
+
+.content__title,
+.content__text {
+  text-shadow: 0 2px 8px rgba(255, 255, 255, 0.3);
 }
 
 /* Tags */
@@ -115,7 +125,7 @@ body.loading::before {
   box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
 
-/* Media content */
+/* Media */
 .content__media {
   width: 100%;
   height: 100%;
@@ -130,43 +140,58 @@ body.loading::before {
   object-fit: cover;
 }
 
-/* Scroll space */
-.demo8-wrapper .wrap::after {
+/* Extra spazio sotto la sezione, dopo lo scroll pinned */
+.demo8-wrapper::after {
   content: '';
   display: block;
-  height: 60vh;
+  height: 10vh;
 }
 
-/* Responsive */
+/* ================================
+   RESPONSIVE
+================================ */
+
 @media (max-width: 1024px) {
+  /* Su tablet / mobile niente stack GSAP:
+     gestiamo tutto in colonna normale (fallback) */
+
+  .sticky-services-content {
+    padding: 3rem 1.5rem 4rem;
+  }
+
+    .cards-stack {
+    position: relative;
+    min-height: 0; /* ✅ Già corretto */
+    height: auto; /* Aggiungi questa riga */
+  }
+
+  .content--card {
+    position: relative;
+    inset: auto;
+    margin-bottom: 2rem;
+    opacity: 1;
+    transform: none;
+  }
+
   .content__inner {
     grid-template-columns: 1fr;
     grid-template-rows: auto 1fr;
-    padding: 40px;
+    padding: 32px;
+    gap: 32px;
   }
 
   .content__media {
-    height: 300px;
+    height: 260px;
   }
 }
 
 @media (max-width: 768px) {
-  .content--sticky {
-    height: auto;
-    margin-bottom: 10vh;
-  }
-
-  .content__inner {
-    padding: 30px;
-    gap: 30px;
-  }
-
   .content__title {
     font-size: 2rem;
   }
 
   .content__media {
-    height: 200px;
+    height: 220px;
   }
 
   .tag {

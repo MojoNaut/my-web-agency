@@ -98,3 +98,36 @@
   background-image: linear-gradient(hsl(200, 84%, 60%), hsl(180, 79%, 71%));
   z-index: 5;
 }
+/* ⭐ Riduci dimensioni e blur su mobile */
+@media (max-width: 768px) {
+  .gradient {
+    --size: 500px; /* Da 750px */
+    filter: blur(100px); /* Da blur(150px) */
+    animation-duration: 60s, 25s, 12s; /* ⭐ Rallenta animazioni */
+  }
+}
+
+/* ⭐ Su mobile nascondi gli ultimi 2 gradienti */
+@media (max-width: 768px) {
+  #gradient3,
+  #gradient4 {
+    display: none;
+  }
+}
+
+/* Background.css */
+@media (max-width: 768px) {
+  .gradient {
+    --size: 500px;
+    filter: blur(100px);
+  }
+  #gradient3, #gradient4 { display: none; }
+}
+
+/* StickySections.css */
+@media (max-width: 768px) {
+  .content--card {
+    backdrop-filter: blur(15px);
+    background: rgba(255, 255, 255, 0.18);
+  }
+}

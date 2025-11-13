@@ -3,23 +3,29 @@ import './Background.css';
 
 const Background = () => {
   useEffect(() => {
-    const gradients = document.querySelectorAll('.gradient');
+  const isMobile = window.innerWidth < 768;
+  const gradients = document.querySelectorAll('.gradient');
+  
+  gradients.forEach((gradient, index) => {
+    // ⭐ Su mobile: mostra solo 3 gradienti invece di 5
+    if (isMobile && index > 2) {
+      gradient.style.display = 'none';
+      return;
+    }
 
-    gradients.forEach(gradient => {
-      const vw = window.innerWidth;
-      const vh = window.innerHeight;
-      const randomStartX = Math.random() * vw;
-      const randomStartY = Math.random() * vh;
-      const randomEndX = Math.random() * vw;
-      const randomEndY = Math.random() * vh;
+    const vw = window.innerWidth;
+    const vh = window.innerHeight;
+    const randomStartX = Math.random() * vw;
+    const randomStartY = Math.random() * vh;
+    const randomEndX = Math.random() * vw;
+    const randomEndY = Math.random() * vh;
 
-      gradient.style.setProperty('--start-x', `${randomStartX}px`);
-      gradient.style.setProperty('--start-y', `${randomStartY}px`);
-      gradient.style.setProperty('--end-x', `${randomEndX}px`);
-      gradient.style.setProperty('--end-y', `${randomEndY}px`);
-    });
-  }, []);
-
+    gradient.style.setProperty('--start-x', `${randomStartX}px`);
+    gradient.style.setProperty('--start-y', `${randomStartY}px`);
+    gradient.style.setProperty('--end-x', `${randomEndX}px`);
+    gradient.style.setProperty('--end-y', `${randomEndY}px`);
+  });
+}, []);
   return (
     <>
     <div className="bgStick background-site"> 

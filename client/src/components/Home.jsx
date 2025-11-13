@@ -1,9 +1,9 @@
-// Home.jsx - SENZA Footer
+// Home.jsx - 
 import React from 'react';
 import Background from './Background';
 import HeroSection from './HeroSection';
 import ProcessSection from './ProcessSection';
-import StickySections from './StickySections';
+import StickySections from './StickySections/StickySections';
 import Portfolio from './Portfolio';
 import { useSectionTitleAnimation } from '../hooks/useSectionTitleAnimation';
 import './Home.css';
@@ -16,21 +16,14 @@ const Home = () => {
       <Background />
       <HeroSection />
       
-      <section id="section-process" className="home-section">
-        <div className="section-header">
-          <h2 className="section-title" data-animate="slideIn">
-            Perché noi
-          </h2>
-        </div>
-        <ProcessSection />
-      </section>
+    <section id="section-process" className="home-section section-process-container">
+
+  <ProcessSection />
+</section>
+
       
       <section id="services-section" className="home-section">
-        <div className="section-header">
-          <h2 className="section-title" data-animate="slideIn">
-            I nostri servizi
-          </h2>
-        </div>
+       
         <StickySections />
       </section>
       
