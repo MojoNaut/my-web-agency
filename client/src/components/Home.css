@@ -11,19 +11,9 @@ section {
   max-width: 1600px;
   margin: 0 auto;
 }
-#services-section {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  max-width: 100% !important; /* ⭐ Full width */
-    position: relative; /* ⭐ Per z-index */
-}
 
-#services-section .section-header {
-  padding-left: calc(5vw + 10px);
-  padding-right: calc(5vw + 10px);
-  max-width: 1600px;
-  margin: 0 auto;
-}
+
+
 /* Home.css - Aggiungi alla fine */
 
 /* Ottimizzazione animazioni titoli */
@@ -73,13 +63,5 @@ section {
     padding-top: calc(2vw + 10px);
     padding-bottom: calc(2vw + 10px);
   }
-    #services-section {
-    padding-left: 0 !important;
-    padding-right: 0 !important;
-  }
 
-  #services-section .section-header {
-    padding-left: calc(2vw + 10px);
-    padding-right: calc(2vw + 10px);
-  }
 }
